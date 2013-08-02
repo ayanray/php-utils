@@ -4,24 +4,22 @@ namespace AyanRay;
 
 class StringUtils
 {
-    public static function removeFromBeginning($needle, $haystack) {
-        $to_return = $haystack;
-        $needle_len = strlen($needle);
-        if (substr($haystack, 0, $needle_len) === $needle) {
-            $to_return = substr($haystack, $needle_len, strlen($haystack));
+    public static function removeFromBeginning($remove, $from) 
+    {
+        $remove_len = strlen($remove);
+        if (substr($from, 0, $remove_len) === $remove) {
+            return substr($from, $remove_len, strlen($from));
         }
-
-        return $to_return;
+        return $from;
     }
 
-    public static function removeFromEnd($needle, $haystack) {
-        $to_return = $haystack;
-        $needle_len = strlen($needle);
-        if (substr($haystack, -$needle_len) === $needle) {
-            $to_return = substr($haystack, 0, -$needle_len);
+    public static function removeFromEnd($remove, $from) 
+    {
+        $remove_len = strlen($remove);
+        if (substr($from, -$remove_len) === $remove) {
+            return substr($from, 0, -$remove_len);
         }
-
-        return $to_return;
+        return $from;
     }
 
 
