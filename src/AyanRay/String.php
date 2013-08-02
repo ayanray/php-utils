@@ -14,6 +14,10 @@ class String
         return new String($str);
     }
 
+    public function getString() {
+        return $this->_str;
+    }
+
     public function __toString() {
         return $this->_str;
     }
