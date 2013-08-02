@@ -13,7 +13,7 @@ class StringUtils
 
         return $to_return;
     }
-    
+
     public static function removeFromEnd($needle, $haystack) {
         $to_return = $haystack;
         $needle_len = strlen($needle);
