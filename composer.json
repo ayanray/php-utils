@@ -1,0 +1,26 @@
+{
+    "name": "ayanray/php-utils",
+    "type": "library",
+    "description": "A collection of PHP-Utils",
+    "keywords": ["utils", "php"],
+    "homepage": "http://ayanray.com/",
+    "license": "MIT",
+
+    "authors": [
+        {
+            "name": "Ayan Ray",
+            "email": "ayan0407@gmail.com",
+            "homepage": "https://github.com/ayanray"
+        }
+    ],
+
+    "require": {
+        "php": ">=5.3.2"
+    },
+
+    "autoload": {
+        "psr-0": {
+            "AyanRay": "src/"
+        }
+    }
+}
