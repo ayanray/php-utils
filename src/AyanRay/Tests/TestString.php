@@ -1,48 +1,83 @@
 <?php
 
-class TestString extends PHPUnit_Framework_TestCase
-{
-    public function testRemoveFromFront()
-    {
-        $this->assertEquals("gitignore", AyanRay\String::c(".gitignore")->removeFront(".")); // simple
+class TestString extends PHPUnit_Framework_TestCase {
 
-        $this->assertEquals(".gitignore", AyanRay\String::c("..gitignore")->removeFront(".")); // only 1
+   public function testRemoveFromFront() {
+      $this->assertEquals("gitignore", AyanRay\String::c(".gitignore")->removeFront("."));
+      $this->assertEquals(
+         ".gitignore", AyanRay\String::c("..gitignore")->removeFront(".")
+      );
+      $this->assertEquals(
+         "test", AyanRay\String::c("test")->removeFront(".")
+      );
+      $this->assertEquals("", AyanRay\String::c("")->removeFront("_"));
+   }
 
-        $this->assertEquals("test", AyanRay\String::c("test")->removeFront(".")); // not found
+   public function testRemoveFromEnd() {
+      $this->assertEquals(
+         "folder", AyanRay\String::c("folder/")->removeEnd("/")
+      );
+      $this->assertEquals(
+         "folder/", AyanRay\String::c("folder//")->removeEnd("/")
+      );
+      $this->assertEquals(
+         "folder", AyanRay\String::c("folder")->removeEnd("/")
+      );
+      $this->assertEquals("", AyanRay\String::c("")->removeEnd("_"));
+   }
 
-        $this->assertEquals("", AyanRay\String::c("")->removeFront("_")); // empty
-    }
+   public function testAddToFront() {
+      $this->assertEquals(
+         "/folder", AyanRay\String::c("folder")->addFront("/")
+      );
+      $this->assertEquals(
+         "/folder", AyanRay\String::c("/folder")->addFront("/")
+      );
+      $this->assertEquals(
+         "//folder", AyanRay\String::c("//folder")->addFront("/")
+      );
+      $this->assertEquals("/", AyanRay\String::c("")->addFront("/"));
+   }
 
-    public function testRemoveFromEnd()
-    {
-        $this->assertEquals("folder", AyanRay\String::c("folder/")->removeEnd("/")); // simple
+   public function testAddToEnd() {
+      $this->assertEquals("folder/", AyanRay\String::c("folder")->addEnd("/"));
+      $this->assertEquals(
+         "folder/", AyanRay\String::c("folder/")->addEnd("/")
+      );
+      $this->assertEquals(
+         "folder//", AyanRay\String::c("folder//")->addEnd("/")
+      );
+      $this->assertEquals("/", AyanRay\String::c("")->addEnd("/"));
+   }
 
-        $this->assertEquals("folder/", AyanRay\String::c("folder//")->removeEnd("/")); // only 1
-
-        $this->assertEquals("folder", AyanRay\String::c("folder")->removeEnd("/")); // not found
-
-        $this->assertEquals("", AyanRay\String::c("")->removeEnd("_")); // empty
-    }
-
-    public function testAddToFront()
-    {
-        $this->assertEquals("/folder", AyanRay\String::c("folder")->addFront("/")); // simple
-
-        $this->assertEquals("/folder", AyanRay\String::c("/folder")->addFront("/")); // should be same
-
-        $this->assertEquals("//folder", AyanRay\String::c("//folder")->addFront("/")); // should be same repeats
-
-        $this->assertEquals("/", AyanRay\String::c("")->addFront("/")); // empty
-    }
-
-    public function testAddToEnd()
-    {
-        $this->assertEquals("folder/", AyanRay\String::c("folder")->addEnd("/")); // simple
-
-        $this->assertEquals("folder/", AyanRay\String::c("folder/")->addEnd("/")); // should be same
-
-        $this->assertEquals("folder//", AyanRay\String::c("folder//")->addEnd("/")); // should be same repeats
-
-        $this->assertEquals("/", AyanRay\String::c("")->addEnd("/")); // empty
-    }
+   public function testMisc() {
+      $this->assertEquals(8, AyanRay\String::c("test 123")->length());
+      $this->assertEquals(0, AyanRay\String::c("")->length());
+      $this->assertEquals(1, AyanRay\String::c("\n")->length());
+      $this->assertEquals(0, AyanRay\String::c("\n")->charCount());
+      $this->assertEquals(
+         3, AyanRay\String::c("hello hello hello")->substrCount
+         (
+            "hello"
+         )
+      );
+      $this->assertEquals(
+         1, AyanRay\String::c("Hello Hello hello")->substrCount
+         (
+            "hello"
+         )
+      );
+      $this->assertEquals(
+         3, AyanRay\String::c("Hello Hello hello")->substrCount
+         (
+            "hello", false
+         )
+      );
+      $this->assertEquals("cba", AyanRay\String::c("abc")->reverse());
+      $this->assertEquals(
+         "Every Good Boy Deserves Fudge",
+         AyanRay\String::c("every good boy deserves fudge")
+             ->capitalize()
+      );
+   }
 }
