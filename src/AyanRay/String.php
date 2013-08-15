@@ -319,4 +319,13 @@ class String {
          return substr_count($this->_str, $substr);
       }
    }
+
+   /**
+    * @param $substr
+    *
+    * @return bool
+    */
+   public function contains($substr) {
+      return strpos($this->_str, $substr) !== false;
+   }
 }

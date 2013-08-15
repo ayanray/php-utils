@@ -1,8 +1,8 @@
 {
     "name": "ayanray/php-utils",
     "type": "library",
-    "description": "A collection of PHP-Utils",
-    "keywords": ["utils", "php"],
+    "description": "A collection of PHP-Utils: String, Sections (AJAX+PHP)",
+    "keywords": ["utils", "php", "sections", "layout", "pagelets"],
     "homepage": "http://ayanray.com/",
     "license": "MIT",
 

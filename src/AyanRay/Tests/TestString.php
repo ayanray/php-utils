@@ -79,5 +79,9 @@ class TestString extends PHPUnit_Framework_TestCase {
          AyanRay\String::c("every good boy deserves fudge")
              ->capitalize()
       );
+
+      $this->assertEquals(
+         true, AyanRay\String::c("every good boy deserves fudge")->contains("fudge")
+      );
    }
 }
